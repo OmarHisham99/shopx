@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/welcomepage">
+
+    <fragment
+        android:id="@+id/welcomepage"
+        android:name="com.example.shoppingapp.welcomepage"
+        android:label="welcomepage" >
+        <action
+            android:id="@+id/action_welcomepage_to_loginpage"
+            app:destination="@id/loginpage" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginpage"
+        android:name="com.example.shoppingapp.loginpage"
+        android:label="loginpage" >
+        <action
+            android:id="@+id/action_loginpage_to_signup"
+            app:destination="@id/signup" />
+    </fragment>
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.example.shoppingapp.signup"
+        android:label="signup" >
+        <action
+            android:id="@+id/action_signup_to_loginpage"
+            app:destination="@id/loginpage"
+            app:popUpTo="@id/loginpage"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
