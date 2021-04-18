@@ -1,32 +1,59 @@
 package com.example.shoppingapp
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.InputType
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.ViewModel.LoginViewmodel
 import com.example.shoppingapp.databinding.FragmentLoginpageBinding
+import com.google.firebase.auth.FirebaseUser
 
 
 class loginpage : Fragment() {
-
+    lateinit var binding: FragmentLoginpageBinding
+    lateinit var loginViewmodel:LoginViewmodel
+    lateinit var txtview:TextView
+    lateinit var editText:EditText
+    lateinit var spannableString:SpannableString
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentLoginpageBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_loginpage,container,false)
-        val txtview = binding.sentence2
-        val spannableString = SpannableString(txtview.text)
+        loginViewmodel = ViewModelProvider(this)[LoginViewmodel::class.java]
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_loginpage,container,false)
+        txtview = binding.sentence2
+        editText = binding.passwordTxt
+        spannableString = SpannableString(txtview.text)
+        setclickablespan()
+        togglepass()
+        toast()
+        setlogin()
+        goto()
+        return binding.root
+    }
+
+    fun setclickablespan()
+    {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
                 binding.sentence2.setOnClickListener { view->
@@ -44,9 +71,58 @@ class loginpage : Fragment() {
         txtview.text = spannableString
         txtview.movementMethod = LinkMovementMethod.getInstance()
         txtview.highlightColor = Color.TRANSPARENT
-
-        return binding.root
+    }
+    fun toast()
+    {
+        loginViewmodel.Toast
+            ?.observe(viewLifecycleOwner,
+                Observer<String?> { string ->
+                    if (string != null)
+                    {
+                        Toast.makeText(activity?.applicationContext, string, Toast.LENGTH_SHORT).show()
+                    }
+                })
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
+    fun togglepass()
+    {
+        binding.passwordTxt.setOnTouchListener(OnTouchListener { v, event ->
+            val DRAWABLE_LEFT = 0
+            val DRAWABLE_TOP = 1
+            val DRAWABLE_RIGHT = 2
+            val DRAWABLE_BOTTOM = 3
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX + binding.passwordTxt.paddingRight >= binding.passwordTxt.getRight() + - binding.passwordTxt.getCompoundDrawables().get(DRAWABLE_RIGHT).getBounds().width()
+                ) {
+                    if(  binding.passwordTxt.inputType!=1)
+                        binding.passwordTxt.inputType =  1
+                    else
+                        binding.passwordTxt.inputType =  InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+                    return@OnTouchListener true
+                }
+            }
+            false
+        })
     }
+    fun setlogin()
+    {
+        binding.loginBtn.setOnClickListener(View.OnClickListener {
+            val Email: String = binding.usernameTxt.getText().toString()
+            val password: String = binding.passwordTxt.getText().toString()
+            loginViewmodel.login(Email, password)
+        })
+    }
+    fun goto()
+    {
+        loginViewmodel.userLiveData
+            ?.observe(viewLifecycleOwner,
+                Observer { string ->
+                    if (string != null) {
+                       findNavController().navigate(R.id.action_loginpage_to_holderfrag)
+                    }
+                })
+    }
+
+}
