@@ -20,10 +20,10 @@
             android:background="@drawable/signup_txt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintHorizontal_bias="0.053"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069" />
+            app:layout_constraintVertical_bias="0.038" />
 
         <ImageButton
             android:id="@+id/fb_btn"
@@ -32,11 +32,11 @@
             android:background="@color/offWhite"
             android:src="@drawable/fb_btn"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.177" />
+            app:layout_constraintEnd_toEndOf="@+id/sentence1"
+            app:layout_constraintHorizontal_bias="0.223"
+            app:layout_constraintStart_toStartOf="@+id/firstname_txt"
+            app:layout_constraintTop_toBottomOf="@+id/signuptxt"
+            app:layout_constraintVertical_bias="0.04000002" />
 
         <ImageButton
             android:id="@+id/gmail_btn"
@@ -45,23 +45,24 @@
             android:background="@color/offWhite"
             android:src="@drawable/gmail"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.928"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.177" />
+            app:layout_constraintEnd_toEndOf="@+id/firstname_txt"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/fb_btn"
+            app:layout_constraintTop_toBottomOf="@+id/signuptxt"
+            app:layout_constraintVertical_bias="0.04000002" />
 
         <TextView
             android:id="@+id/sentence1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/alternate_login"
+            app:flow_verticalBias="0.3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.276" />
+            app:layout_constraintTop_toBottomOf="@+id/gmail_btn"
+            app:layout_constraintVertical_bias="0.072" />
 
         <EditText
             android:id="@+id/firstname_txt"
@@ -75,10 +76,9 @@
             android:padding="25dp"
             app:layout_constraintBottom_toTopOf="@+id/lastname_txt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sentence1"
-            app:layout_constraintVertical_bias="0.383" />
+            app:layout_constraintVertical_bias="0.13" />
 
         <EditText
             android:id="@+id/lastname_txt"
@@ -92,7 +92,6 @@
             android:padding="25dp"
             app:layout_constraintBottom_toTopOf="@+id/email_txt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstname_txt" />
 
@@ -121,11 +120,11 @@
             android:ems="10"
             android:fontFamily="@font/calisto_mt"
             android:hint="Password"
+            android:drawableRight="@drawable/hide"
             android:inputType="textPassword"
             android:padding="25dp"
             app:layout_constraintBottom_toTopOf="@+id/signup_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email_txt"
             app:layout_constraintVertical_bias="0.722" />
@@ -148,12 +147,11 @@
             android:layout_width="238dp"
             android:layout_height="35dp"
             android:background="@drawable/policy"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.876" />
+            tools:layout_editor_absoluteY="604dp" />
 
         <TextView
             android:id="@+id/sentence3"
@@ -165,7 +163,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.979" />
+            app:layout_constraintTop_toBottomOf="@+id/policy"
+            app:layout_constraintVertical_bias="0.93" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
