@@ -27,12 +27,17 @@ class loginpage : Fragment() {
         val binding: FragmentLoginpageBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_loginpage,container,false)
         val txtview = binding.sentence2
         val spannableString = SpannableString(txtview.text)
+        val btnLogin= binding.loginBtn
+        val tmp = binding.temp
+
+
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
                 binding.sentence2.setOnClickListener { view->
-                    view.findNavController().navigate(R.id.action_loginpage_to_signup)
-                }
+                    view.findNavController().navigate(R.id.action_loginpage_to_signup) }
             }
+
+
 
             override fun updateDrawState(drawState: TextPaint) {
                 super.updateDrawState(drawState)
@@ -40,6 +45,7 @@ class loginpage : Fragment() {
                 drawState.color = Color.rgb(224, 143, 98)
             }
         }
+        tmp.setOnClickListener{view->view.findNavController().navigate(R.id.action_loginpage_to_homepage)}
         spannableString.setSpan(clickableSpan, 23, 30, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         txtview.text = spannableString
         txtview.movementMethod = LinkMovementMethod.getInstance()
