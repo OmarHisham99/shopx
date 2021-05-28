@@ -28,7 +28,7 @@ class homepage : Fragment() {
          binding.imagslider.adapter=adp
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_homepage, container, false)
+        return binding.root
     }
 
 }

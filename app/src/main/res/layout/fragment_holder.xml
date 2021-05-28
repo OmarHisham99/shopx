@@ -24,10 +24,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/light_brown"
+        app:itemBackground="@drawable/loginpage"
         app:menu="@menu/bottom_menu"
-        app:itemIconTint="@color/light_orange"
-        app:itemTextColor="@color/light_orange"/>
+        app:itemIconTint="@color/orange"
+        app:itemTextColor="@color/grey"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

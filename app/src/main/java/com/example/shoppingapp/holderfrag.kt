@@ -27,7 +27,7 @@ class holderfrag: Fragment(), BottomNavigationView.OnNavigationItemSelectedListe
     ): View? {
          binding = DataBindingUtil.inflate(inflater,
             com.example.shoppingapp.R.layout.fragment_holder,container,false)
-        loadFragment(exploreFragment())
+        loadFragment(homepage())
         binding.bottom.setOnNavigationItemSelectedListener(this)
         authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
             if(user?.currentUser == null)
@@ -51,7 +51,7 @@ class holderfrag: Fragment(), BottomNavigationView.OnNavigationItemSelectedListe
         var fragment: Fragment? = null
 
         when (item.itemId) {
-           binding.bottom.menu.getItem(0).itemId-> fragment = exploreFragment()
+           binding.bottom.menu.getItem(0).itemId-> fragment = homepage()
             binding.bottom.menu.getItem(2).itemId-> fragment = profileFragment()
         }
 

@@ -9,7 +9,12 @@
         android:label="welcomepage" >
         <action
             android:id="@+id/action_welcomepage_to_loginpage"
-            app:destination="@id/loginpage" />
+            app:destination="@id/loginpage"
+            app:popUpTo="@+id/navigation"/>
+        <action
+            android:id="@+id/action_welcomepage_to_holderfrag"
+            app:popUpTo="@+id/navigation"
+            app:destination="@id/holderfrag" />
     </fragment>
     <fragment
         android:id="@+id/loginpage"
@@ -17,10 +22,14 @@
         android:label="loginpage" >
         <action
             android:id="@+id/action_loginpage_to_signup"
-            app:destination="@id/signup" />
+            app:destination="@id/signup"
+            app:popUpTo="@id/loginpage"
+            app:popUpToInclusive="false"/>
         <action
-            android:id="@+id/action_loginpage_to_homepage"
-            app:destination="@id/homepage" />
+            android:id="@+id/action_loginpage_to_holderfrag"
+            app:destination="@id/holderfrag"
+            app:popUpTo="@+id/navigation"
+            />
     </fragment>
     <fragment
         android:id="@+id/signup"
@@ -29,11 +38,27 @@
         <action
             android:id="@+id/action_signup_to_loginpage"
             app:destination="@id/loginpage"
-            app:popUpTo="@id/loginpage"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@+id/navigation" />
+        <action
+            android:id="@+id/action_signup_to_holderfrag"
+            app:destination="@id/holderfrag"
+            app:popUpTo="@+id/navigation"/>
     </fragment>
     <fragment
-        android:id="@+id/homepage"
-        android:name="com.example.shoppingapp.homepage"
-        android:label="homepage" />
+        android:id="@+id/holderfrag"
+        android:name="com.example.shoppingapp.holderfrag"
+        android:label="holderfrag" >
+        <action
+            android:id="@+id/action_holderfrag_to_welcomepage"
+            app:popUpTo="@+id/navigation"
+            app:destination="@id/welcomepage" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.shoppingapp.profileFragment"
+        android:label="profileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_welcomepage2"
+            app:destination="@id/welcomepage" />
+    </fragment>
 </navigation>
