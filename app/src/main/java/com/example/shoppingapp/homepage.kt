@@ -23,7 +23,7 @@ class homepage : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_homepage, container, false)
         setHasOptionsMenu(true)
 
-        var imgs= listOf<Int>(R.drawable.img1,R.drawable.img2,R.drawable.img3)
+        var imgs= listOf<Int>(R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4)
          val adp = Adapter(imgs)
          binding.imagslider.adapter=adp
 
