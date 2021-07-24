@@ -95,7 +95,8 @@ class loginpage : Fragment() {
             val DRAWABLE_BOTTOM = 3
             if (event.action == MotionEvent.ACTION_UP) {
                 if (event.rawX + binding.passwordTxt.paddingRight >= binding.passwordTxt.getRight() + - binding.passwordTxt.getCompoundDrawables().get(DRAWABLE_RIGHT).getBounds().width()
-                ) {
+                )
+                {
                     if(  binding.passwordTxt.inputType!=1)
                         binding.passwordTxt.inputType =  1
                     else

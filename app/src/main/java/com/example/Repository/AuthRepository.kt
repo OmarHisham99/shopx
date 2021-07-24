@@ -9,9 +9,9 @@ import com.google.firebase.auth.FirebaseUser
 
 class AuthRepository
 {
-     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-     val userLiveData: MutableLiveData<FirebaseUser?>? = MutableLiveData<FirebaseUser?>()
-     val toast: MutableLiveData<String?>? = MutableLiveData<String?>()
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    val userLiveData: MutableLiveData<FirebaseUser?>? = MutableLiveData<FirebaseUser?>()
+    val toast: MutableLiveData<String?>? = MutableLiveData<String?>()
     val toast2: MutableLiveData<String?>? = MutableLiveData<String?>()
     fun login(email:String, pass:String)
    {
@@ -26,7 +26,7 @@ class AuthRepository
                    userLiveData?.setValue(null)
                    toast?.value = task.getException()?.message.toString()
                }
-               }
+              }
            )
    }
     fun register(email:String, pass:String)
@@ -42,5 +42,10 @@ class AuthRepository
                toast2?.value = "Registration Failure: " + it.getException()?.message
            }
         }
+    }
+
+    fun signOut() {
+        firebaseAuth.signOut()
+        userLiveData!!.postValue(null)
     }
 }
