@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/welcomepage"
-        android:name="com.example.shoppingapp.welcomepage"
+        android:name="com.example.shoppingapp.WelcomePage.welcomepage"
         android:label="welcomepage" >
         <action
             android:id="@+id/action_welcomepage_to_loginpage"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginpage"
-        android:name="com.example.shoppingapp.loginpage"
+        android:name="com.example.shoppingapp.LoginPage.loginpage"
         android:label="loginpage" >
         <action
             android:id="@+id/action_loginpage_to_signup"
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/signup"
-        android:name="com.example.shoppingapp.signup"
+        android:name="com.example.shoppingapp.SignupPage.signup"
         android:label="signup" >
         <action
             android:id="@+id/action_signup_to_loginpage"

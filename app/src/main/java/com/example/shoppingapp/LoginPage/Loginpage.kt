@@ -1,7 +1,6 @@
-package com.example.shoppingapp
+package com.example.shoppingapp.LoginPage
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
@@ -25,8 +24,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.ViewModel.LoginViewmodel
+import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentLoginpageBinding
-import com.google.firebase.auth.FirebaseUser
 
 
 class loginpage : Fragment() {
@@ -40,7 +39,7 @@ class loginpage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         loginViewmodel = ViewModelProvider(this)[LoginViewmodel::class.java]
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_loginpage,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loginpage,container,false)
         txtview = binding.sentence2
         editText = binding.passwordTxt
         spannableString = SpannableString(txtview.text)

@@ -13,4 +13,5 @@
     <color name="light_grey">#A0A0A0</color>
     <color name="light_brown">#FFE4C4</color>
     <color name="light_orange">#fdad5c</color>
+    <color name="background_Color">#FCF8E8</color>
 </resources>

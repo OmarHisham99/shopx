@@ -1,4 +1,4 @@
-package com.example.shoppingapp
+package com.example.shoppingapp.SignupPage
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -19,14 +19,12 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.Firestore_objs.User
-import com.example.ViewModel.LoginViewmodel
 import com.example.ViewModel.SignupViewmodel
+import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentSignupBinding
-import com.google.firebase.auth.FirebaseUser
 
 
 class signup : Fragment() {
@@ -39,7 +37,7 @@ class signup : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         signupViewmodel = ViewModelProvider(this)[SignupViewmodel::class.java]
-         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_signup,container,false)
+         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup,container,false)
          txtview =binding.sentence3
          spannableString = SpannableString(txtview.text)
          setclickablespan()
