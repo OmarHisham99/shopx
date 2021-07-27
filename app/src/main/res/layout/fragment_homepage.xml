@@ -18,8 +18,7 @@
             android:layout_marginTop="-10dp"
             android:fitsSystemWindows="true"
             app:iss_auto_cycle="true"
-            app:iss_period="3000"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:iss_period="2000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,45 +72,37 @@
                 android:textStyle="bold" />
 
 
+            <com.arlib.floatingsearchview.FloatingSearchView
+                android:id="@+id/SearchBar"
+                android:layout_width="350dp"
+                android:layout_height="147dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="21dp"
+                app:floatingSearch_leftActionColor="@color/orange"
+                app:floatingSearch_leftActionMode="showSearch"
+                app:floatingSearch_searchHint="What are you looking for ?"
+                app:floatingSearch_searchInputTextSize="5dp"
+                android:backgroundTint="@color/white"
+                app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
         </com.denzcoskun.imageslider.ImageSlider>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="391dp"
-            android:layout_height="196dp"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
             android:layout_alignParentBottom="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!--<androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/imagslider"
-            android:layout_width="match_parent"
-            android:layout_height="534dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="-2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
+            app:layout_constraintTop_toBottomOf="@+id/image_slider"
+            app:layout_constraintVertical_bias="1.0" />
 
-        <!--<com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:translationY="16dp"
-            app:layout_constraintBottom_toBottomOf="@id/imagslider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:tabBackground="@drawable/viewpager_indicator"
-            app:tabGravity="center"
-            app:tabIndicatorHeight="0dp" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

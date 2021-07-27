@@ -17,7 +17,7 @@ class ProfileViewmodel(application: Application) : AndroidViewModel(application)
             = userrepo?.userLiveData
     fun getuserdata()
     {
-        userrepo.getuser(authrepo.firebaseAuth.currentUser.uid)
+        userrepo.getuser(authrepo.firebaseAuth.currentUser!!.uid)
     }
 
     fun signOut() {
