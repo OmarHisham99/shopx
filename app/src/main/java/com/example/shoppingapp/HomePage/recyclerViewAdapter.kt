@@ -32,11 +32,16 @@ class recyclerViewAdapter(val ci: Array<Int>, val cn: Array<String>): RecyclerVi
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener
     {
+        val itemname1: TextView
+        val itempic1: ImageButton
         init {
+            itemname1 = itemView.findViewById(R.id.itemName1)
+            itempic1 = itemView.findViewById(R.id.itemPic1)
             itemView.setOnClickListener(this)
+            itemname1.setOnClickListener(this)
+            itempic1.setOnClickListener(this)
         }
-        val itemname1: TextView = itemView.findViewById(R.id.itemName1)
-        val itempic1: ImageButton = itemView.findViewById(R.id.itemPic1)
+
         override fun onClick(p0: View?) {
             clickListener?.onItemClick(adapterPosition , p0);
         }

@@ -50,7 +50,7 @@ class holderfrag: Fragment(), BottomNavigationView.OnNavigationItemSelectedListe
         var fragment: Fragment? = null
 
         when (item.itemId) {
-           binding.bottom.menu.getItem(0).itemId-> fragment = homepage()
+            binding.bottom.menu.getItem(0).itemId-> fragment = homepage()
             binding.bottom.menu.getItem(2).itemId-> fragment = profileFragment()
         }
 

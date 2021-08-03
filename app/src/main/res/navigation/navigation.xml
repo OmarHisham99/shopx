@@ -64,4 +64,19 @@
             android:id="@+id/action_profileFragment_to_loginpage"
             app:destination="@id/loginpage" />
     </fragment>
+    <fragment
+        android:id="@+id/categoryFragmet"
+        android:name="com.example.shoppingapp.CategoryFragmet"
+        android:label="CategoryFragmet" />
+    <fragment
+        android:id="@+id/homepage"
+        android:name="com.example.shoppingapp.HomePage.homepage"
+        android:label="homepage" >
+        <action
+            android:id="@+id/action_homepage_to_categoryFragmet"
+            app:destination="@id/categoryFragmet" />
+        <argument
+            android:name="CategoryName"
+            app:argType="string" />
+    </fragment>
 </navigation>
