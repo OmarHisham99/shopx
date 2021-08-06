@@ -37,7 +37,8 @@ class loginpage : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?
+    {
         loginViewmodel = ViewModelProvider(this)[LoginViewmodel::class.java]
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_loginpage,container,false)
         txtview = binding.sentence2

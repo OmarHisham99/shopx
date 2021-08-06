@@ -9,8 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ProductsRepository
 {
-    val Url:String = "http://localhost:3030/"
+    val Url:String = "http://192.168.1.6:3030/"
     private var getCat: Product_Interface? = null
+
 
 
     init {
@@ -36,7 +37,7 @@ class ProductsRepository
     }
 
     fun getcoordinates(Category:String): Call<Product_Model?>? {
-        return getCat?.getproducts(Category)
+        return getCat?.getproducts(Category,20)
     }
 
 }

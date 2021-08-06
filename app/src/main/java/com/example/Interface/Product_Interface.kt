@@ -7,7 +7,8 @@ import retrofit2.http.Query
 
 interface Product_Interface
 {
-    @GET("products")
-    fun getproducts( @Query("name") name:
-                        String) : Call<Product_Model?>?
+
+    @GET("products?")
+    fun getproducts( @Query("name[\$like]") name:
+                        String,@Query("\$limit") limit: Int ) : Call<Product_Model?>?
 }

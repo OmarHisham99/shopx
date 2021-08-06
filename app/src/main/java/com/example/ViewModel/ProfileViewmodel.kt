@@ -12,12 +12,13 @@ class ProfileViewmodel(application: Application) : AndroidViewModel(application)
 {
     val authrepo: AuthRepository =  AuthRepository()
     val userrepo: UserRepository = UserRepository()
+    val userid: String = authrepo.firebaseAuth.currentUser!!.uid
     val FirebaseuserLiveData: MutableLiveData<FirebaseUser?>? = authrepo?.userLiveData
     val userLiveData: MutableLiveData<com.example.Firestore_objs.User?>?
             = userrepo?.userLiveData
     fun getuserdata()
     {
-        userrepo.getuser(authrepo.firebaseAuth.currentUser!!.uid)
+        userrepo.getuser(userid)
     }
 
     fun signOut() {

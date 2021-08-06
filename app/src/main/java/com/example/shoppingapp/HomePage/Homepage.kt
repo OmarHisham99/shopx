@@ -1,24 +1,21 @@
  package com.example.shoppingapp.HomePage
 
-import android.graphics.Insets.add
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.example.shoppingapp.CategoriesPage.CategoryFragmet
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentHomepageBinding
-import com.example.shoppingapp.holderfrag
 import java.util.*
 
 
@@ -60,11 +57,11 @@ import java.util.*
 
         val categoryName = arrayOf(
             "Furniture",
-            "Decorations",
-            "Personal Care",
-            "Women Clothes",
+            "Decor",
+            "care",
+            "T-Shirt",
             "Electronics",
-            "Baby Products",
+            "Products",
             "Musical",
             "Books",
             "lights"
@@ -76,16 +73,19 @@ import java.util.*
             false
         )
         recyclerviewAdapter = recyclerViewAdapter(categoryItem, categoryName)
-        recyclerviewAdapter.setOnItemClickListener(object : recyclerViewAdapter.ClickListener{
+        recyclerviewAdapter.setOnItemClickListener(object : recyclerViewAdapter.ClickListener {
             override fun onItemClick(position: Int, v: View?) {
-
-                val args = Bundle()
-                args.putString("category",categoryName[position])
+                val manager: FragmentManager? = fragmentManager
+                val transaction: FragmentTransaction? = manager?.beginTransaction()
+                val fragment = CategoryFragmet()
+                val arguments = Bundle()
+                arguments.putString("Category", categoryName[position])
+                fragment.setArguments(arguments)
+                transaction?.replace(R.id.fragment_container,fragment)
+                transaction?.commit()
             }
         })
         binding.recyclerView.adapter = recyclerviewAdapter
-
-
 
         // Inflate the layout for this fragment
         return binding.root

@@ -11,17 +11,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class CategoryViewmodel(application: Application) : AndroidViewModel(application)
 {
 
     val productsMutable: MutableLiveData<Product_Model?>? = MutableLiveData<Product_Model?>()
 
-    fun getMovies(country:String) {
-        ProductsRepository.getINSTANCE()?.getcoordinates(country)?.enqueue(object :
-            Callback<Product_Model?> {
+    fun getproducts(categ:String) {
+        ProductsRepository.getINSTANCE()?.getcoordinates(categ)?.enqueue(object :
+                Callback<Product_Model?> {
             override fun onResponse(
-                call: Call<Product_Model?>,
-                response: Response<Product_Model?>
+                    call: Call<Product_Model?>,
+                    response: Response<Product_Model?>
             )
             {
                 productsMutable?.postValue(response.body())
