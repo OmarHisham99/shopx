@@ -36,7 +36,8 @@ class ProductsRepository
         }
     }
 
-    fun getcoordinates(Category:String): Call<Product_Model?>? {
+    fun getcoordinates(Category:String): Call<Product_Model?>?
+    {
         return getCat?.getproducts(Category,20)
     }
 

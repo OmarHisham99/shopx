@@ -51,6 +51,7 @@ class holderfrag: Fragment(), BottomNavigationView.OnNavigationItemSelectedListe
 
         when (item.itemId) {
             binding.bottom.menu.getItem(0).itemId-> fragment = homepage()
+            binding.bottom.menu.getItem(1).itemId-> fragment = cartFragment()
             binding.bottom.menu.getItem(2).itemId-> fragment = profileFragment()
         }
 

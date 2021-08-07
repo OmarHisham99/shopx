@@ -56,9 +56,9 @@ class profileFragment : Fragment() {
                         Observer<FirebaseUser?> { it ->
                             if (it == null)
                             {
-                                if (findNavController().currentDestination?.id == R.id.profileFragment) {
+
                                     findNavController().navigate(R.id.action_profileFragment_to_loginpage)
-                                }
+
 
                             }
                         })

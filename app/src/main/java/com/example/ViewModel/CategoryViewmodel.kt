@@ -16,7 +16,6 @@ class CategoryViewmodel(application: Application) : AndroidViewModel(application
 {
 
     val productsMutable: MutableLiveData<Product_Model?>? = MutableLiveData<Product_Model?>()
-
     fun getproducts(categ:String) {
         ProductsRepository.getINSTANCE()?.getcoordinates(categ)?.enqueue(object :
                 Callback<Product_Model?> {

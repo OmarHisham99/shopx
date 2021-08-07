@@ -13,7 +13,7 @@ import com.example.ViewModel.Cart_ItemViewmodel
 import com.example.application.Data
 import com.example.shoppingapp.R
 
-class ItemsAdapter(val data: List<Data>?): RecyclerView.Adapter<ItemsAdapter.viewHolder>(){
+class Cart_Adapter(val data: List<Cart_Item>?): RecyclerView.Adapter<Cart_Adapter.viewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -27,13 +27,14 @@ class ItemsAdapter(val data: List<Data>?): RecyclerView.Adapter<ItemsAdapter.vie
         return viewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ItemsAdapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: Cart_Adapter.viewHolder, position: Int) {
         holder.name.text = data?.get(position)?.name
         holder.price.text = "AED" + data?.get(position)?.price.toString()
+        holder.Count.text = data?.get(position)?.count.toString()
         Glide.with(holder.image.getContext())
-                .load(data?.get(position)?.image.toString())
-                .centerCrop()
-                .into(holder.image)
+            .load(data?.get(position)?.Image.toString())
+            .centerCrop()
+            .into(holder.image)
     }
 
 
@@ -46,7 +47,6 @@ class ItemsAdapter(val data: List<Data>?): RecyclerView.Adapter<ItemsAdapter.vie
         val Add: ImageButton
         val Remove: ImageButton
         val Count : TextView
-
         init {
             cartItemviewmodel = Cart_ItemViewmodel()
             name = itemView.findViewById(R.id.title)
@@ -57,7 +57,6 @@ class ItemsAdapter(val data: List<Data>?): RecyclerView.Adapter<ItemsAdapter.vie
             Count = itemView.findViewById(R.id.count)
             Add.setOnClickListener(this)
             Remove.setOnClickListener(this)
-
         }
 
         override fun onClick(p0: View?)
@@ -70,18 +69,18 @@ class ItemsAdapter(val data: List<Data>?): RecyclerView.Adapter<ItemsAdapter.vie
                 Count.text = number.toString()
 
                 cartItemviewmodel.AddItem(Cart_Item(data?.get(position)?.id.toString(),data?.get(position)?.name
-                , data?.get(position)?.price.toString(),data?.get(position)?.image, number
+                    , data?.get(position)?.price.toString(),data?.get(position)?.Image, number
                 ))
             }
             else if(p0?.id == R.id.remove)
             {
                 var number: Int = Count.text.toString().toInt() - 1
                 if(number>=0)
-                Count.text = number.toString()
+                    Count.text = number.toString()
                 else
                     number = 0
                 cartItemviewmodel.AddItem(Cart_Item(data?.get(position)?.id.toString(),data?.get(position)?.name
-                    , data?.get(position)?.price.toString(),data?.get(position)?.image, number
+                    , data?.get(position)?.price.toString(),data?.get(position)?.Image, number
                 ))
             }
         }

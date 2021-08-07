@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.Firestore_objs.User
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.ktx.toObject
 class UserRepository
 {
     val firestore:FirebaseFirestore = FirebaseFirestore.getInstance()
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val userLiveData: MutableLiveData<com.example.Firestore_objs.User?>?
             = MutableLiveData<com.example.Firestore_objs.User?>()
     fun setuser(user:User)
@@ -23,10 +25,10 @@ class UserRepository
 
     }
 
-    fun getuser(ID: String)
+    fun getuser()
     {
-        val docRef = firestore.collection("users").document(ID!!)
-        docRef.get().addOnSuccessListener { documentSnapshot ->
+        val docRef = firebaseAuth?.uid?.let { firestore.collection("users").document(it) }
+        docRef?.get()?.addOnSuccessListener { documentSnapshot ->
             val user = documentSnapshot.toObject<com.example.Firestore_objs.User>()
             userLiveData?.postValue(user)
         }

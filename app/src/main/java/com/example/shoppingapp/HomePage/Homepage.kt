@@ -38,7 +38,7 @@ import java.util.*
         imgs.add(SlideModel(R.drawable.img1))
         imgs.add(SlideModel(R.drawable.img2))
         imgs.add(SlideModel(R.drawable.img3))
-        imageslider.setImageList(imgs, ScaleTypes.CENTER_CROP)
+        imageslider.setImageList(imgs, ScaleTypes.FIT)
 
 
 
@@ -75,6 +75,7 @@ import java.util.*
         recyclerviewAdapter = recyclerViewAdapter(categoryItem, categoryName)
         recyclerviewAdapter.setOnItemClickListener(object : recyclerViewAdapter.ClickListener {
             override fun onItemClick(position: Int, v: View?) {
+
                 val manager: FragmentManager? = fragmentManager
                 val transaction: FragmentTransaction? = manager?.beginTransaction()
                 val fragment = CategoryFragmet()
