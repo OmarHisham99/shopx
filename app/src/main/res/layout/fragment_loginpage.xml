@@ -92,10 +92,10 @@
             android:contentDescription="@string/gmail_img"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.855"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toEndOf="@+id/fb_btn"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.177"
+            app:layout_constraintVertical_bias="0.176"
             app:srcCompat="@drawable/gmail" />
 
         <ImageButton
@@ -106,10 +106,10 @@
             android:contentDescription="@string/facebook_img"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintHorizontal_bias="0.109"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.177"
+            app:layout_constraintVertical_bias="0.176"
             app:srcCompat="@drawable/fb_btn" />
 
         <TextView

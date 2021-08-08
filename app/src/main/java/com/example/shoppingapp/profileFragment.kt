@@ -42,7 +42,7 @@ class profileFragment : Fragment() {
                         Observer<User?> { it ->
                             if (it != null)
                             {
-                                binding.name.setText(it.firstname)
+                                binding.name.setText(it.firstname+" "+it.lastname)
                             }
                         })
         profileViewmodel.FirebaseuserLiveData
