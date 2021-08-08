@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -28,25 +29,27 @@ import com.example.shoppingapp.databinding.FragmentSignupBinding
 
 
 class signup : Fragment() {
-    lateinit var binding:FragmentSignupBinding
-     lateinit var txtview:TextView
-    var user: User? = null
-     lateinit var spannableString:SpannableString
-    lateinit var signupViewmodel: SignupViewmodel
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        lateinit var binding:FragmentSignupBinding
+        lateinit var txtview:TextView
+        lateinit var progressBar:ProgressBar
+        var user: User? = null
+        lateinit var spannableString:SpannableString
+        lateinit var signupViewmodel: SignupViewmodel
+     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        signupViewmodel = ViewModelProvider(this)[SignupViewmodel::class.java]
-         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup,container,false)
-         txtview =binding.sentence3
-         spannableString = SpannableString(txtview.text)
-         setclickablespan()
-         togglepass()
-         toast()
-         setsignup()
-         registeruser()
+             signupViewmodel = ViewModelProvider(this)[SignupViewmodel::class.java]
+             binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup,container,false)
+             txtview =binding.sentence3
+             spannableString = SpannableString(txtview.text)
+             progressBar= binding.progressBar
+             setclickablespan()
+             togglepass()
+             toast()
+             setsignup()
+             registeruser()
 
-        return binding.root
+            return binding.root
     }
 
     private fun registeruser() {
@@ -69,11 +72,12 @@ class signup : Fragment() {
                     if (string != null) {
                         Toast.makeText(activity?.applicationContext, string, Toast.LENGTH_SHORT).show()
                     }
+                    progressBar.visibility = View.GONE
+
                 })
     }
     fun setclickablespan()
     {
-
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
                 binding.sentence3.setOnClickListener { view->
@@ -124,6 +128,7 @@ class signup : Fragment() {
             val lastname: String = binding.lastnameTxt.getText().toString()
             user = User("",Email,firstname,lastname )
             signupViewmodel.register(user!!, password)
+            progressBar.visibility = View.VISIBLE
         })
     }
 

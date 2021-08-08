@@ -15,6 +15,7 @@ import android.view.View
 import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -23,17 +24,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.ViewModel.LoginViewmodel
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentLoginpageBinding
 
 
 class loginpage : Fragment() {
     lateinit var binding: FragmentLoginpageBinding
-    lateinit var loginViewmodel:LoginViewmodel
+    lateinit var loginViewmodel: LoginViewmodel
     lateinit var txtview:TextView
     lateinit var editText:EditText
     lateinit var spannableString:SpannableString
+    public lateinit var progressBar:ProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +45,7 @@ class loginpage : Fragment() {
         txtview = binding.sentence2
         editText = binding.passwordTxt
         spannableString = SpannableString(txtview.text)
+        progressBar = binding.progressBar
         setclickablespan()
         togglepass()
         toast()
@@ -109,11 +111,13 @@ class loginpage : Fragment() {
     }
     fun setlogin()
     {
-        binding.loginBtn.setOnClickListener(View.OnClickListener {
-            val Email: String = binding.usernameTxt.getText().toString()
-            val password: String = binding.passwordTxt.getText().toString()
-            loginViewmodel.login(Email, password)
-        })
+           binding.loginBtn.setOnClickListener(View.OnClickListener {
+               val Email: String = binding.usernameTxt.getText().toString()
+                val password: String = binding.passwordTxt.getText().toString()
+                loginViewmodel.login(Email, password)
+               progressBar.visibility = View.VISIBLE
+           })
+
     }
     fun goto()
     {
@@ -123,6 +127,8 @@ class loginpage : Fragment() {
                     if (string != null) {
                        findNavController().navigate(R.id.action_loginpage_to_holderfrag)
                     }
+                    progressBar.visibility = View.GONE
+
                 })
     }
 
